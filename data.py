@@ -3,12 +3,7 @@ import numpy as np
 from torch.utils.data import Dataset
 
 def squiggle(x):
-  return np.abs(x) * np.cos(2*x) / (x**2+1)
-
-def squiggle_with_hole(x, low=-1, high=1):
-  y = squiggle(x)
-  y[(x<high) * (x>low)] = np.nan
-  return y
+  return np.sin(x) * np.exp(-0.5*x**2) * (x+x**2+x**3+x**4-0.5*x**5-0.5*x**6)
 
 class Data(Dataset):
   """
